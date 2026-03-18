@@ -5,7 +5,6 @@ html_code = '''<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomeFinder USA - Affordable Homes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,577 +13,525 @@ html_code = '''<!DOCTYPE html>
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background: #f5f5f5;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
             color: #333;
+            line-height: 1.6;
         }
 
         /* Header */
-        header {
+        .header {
             background: #2c5282;
             color: white;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .logo {
-            font-family: 'Merriweather', serif;
-            font-size: 2rem;
-            font-weight: 700;
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
         }
 
-        .tagline {
-            font-size: 0.9rem;
+        .header p {
+            font-size: 14px;
             opacity: 0.9;
-            margin-top: 5px;
         }
 
-        /* Search Section */
-        .search-section {
+        /* Search Box */
+        .search-box {
             background: white;
-            padding: 30px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .search-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .search-title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
+        .search-box h2 {
             color: #2c5282;
+            margin-bottom: 15px;
+            text-align: center;
         }
 
-        .search-filters {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .search-filters {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
+        .search-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         select, input[type="text"] {
-            padding: 15px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            width: 100%;
-            background: white;
-        }
-
-        select:focus, input:focus {
-            outline: none;
-            border-color: #2c5282;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
         }
 
         .search-btn {
             background: #2c5282;
             color: white;
+            padding: 15px;
             border: none;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 8px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
-            width: 100%;
-            transition: background 0.3s;
         }
 
-        .search-btn:hover {
-            background: #1a365d;
+        /* Filter Links */
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px;
+            flex-wrap: wrap;
         }
 
-        /* Properties Section */
-        .properties-section {
-            max-width: 1200px;
-            margin: 0 auto;
+        .filter-link {
+            background: white;
+            color: #2c5282;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            border: 2px solid #2c5282;
+            font-weight: bold;
+        }
+
+        .filter-link.active {
+            background: #2c5282;
+            color: white;
+        }
+
+        /* Properties */
+        .properties {
             padding: 0 20px 40px;
         }
 
         .section-title {
             text-align: center;
-            font-size: 1.8rem;
             color: #2c5282;
-            margin-bottom: 10px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        /* Filter Tabs */
-        .filter-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .filter-tab {
-            padding: 10px 20px;
-            background: white;
-            border: 2px solid #2c5282;
-            color: #2c5282;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-
-        .filter-tab.active, .filter-tab:hover {
-            background: #2c5282;
-            color: white;
-        }
-
-        /* Property Grid */
-        .property-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-
-        @media (min-width: 640px) {
-            .property-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .property-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            margin-bottom: 20px;
         }
 
         .property-card {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .property-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        .property-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .property-info {
+            padding: 15px;
+        }
+
+        .property-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c5282;
+            margin-bottom: 5px;
+        }
+
+        .property-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .property-location {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .property-features {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .details-btn {
+            display: block;
+            background: #38a169;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Property Detail Page */
+        .detail-page {
+            display: none;
+            background: white;
+            padding: 20px;
+        }
+
+        .detail-page:target {
+            display: block;
+        }
+
+        .detail-page img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .detail-price {
+            font-size: 28px;
+            color: #2c5282;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background: #666;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .contact-box {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-box a {
+            display: block;
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        /* Hide/Show Logic */
+        .property-card {
+            display: block;
         }
 
         .property-card.hidden {
             display: none;
         }
 
-        .property-image-container {
-            position: relative;
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .property-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .property-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: #e53e3e;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .property-badge.featured {
-            background: #38a169;
-        }
-
-        .property-info {
-            padding: 20px;
-        }
-
-        .property-price {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #2c5282;
-            margin-bottom: 8px;
-        }
-
-        .property-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #333;
-        }
-
-        .property-location {
-            color: #666;
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .property-features {
-            display: flex;
-            gap: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #e2e8f0;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .view-btn {
-            width: 100%;
-            padding: 12px;
-            background: #2c5282;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            margin-top: 15px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .view-btn:hover {
-            background: #1a365d;
-        }
-
-        /* No Results */
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            display: none;
-        }
-
-        .no-results.show {
-            display: block;
-        }
-
-        .no-results h3 {
-            color: #666;
-            margin-bottom: 10px;
-        }
-
         /* Footer */
-        footer {
+        .footer {
             background: #1a202c;
             color: white;
-            padding: 30px 20px;
             text-align: center;
-            margin-top: 50px;
+            padding: 30px 20px;
         }
 
-        .footer-logo {
-            font-family: 'Merriweather', serif;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .footer-contact {
-            color: #a0aec0;
-            font-size: 0.9rem;
-            line-height: 1.8;
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .modal.show {
-            display: block;
-        }
-
-        .modal-content {
-            background: white;
-            max-width: 600px;
-            margin: 50px auto;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 35px;
-            height: 35px;
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.5rem;
-            z-index: 10;
-        }
-
-        .modal-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-
-        .modal-info {
-            padding: 25px;
-        }
-
-        .modal-price {
-            font-size: 2rem;
-            color: #2c5282;
-            font-weight: 700;
+        .footer h3 {
             margin-bottom: 10px;
         }
 
-        .modal-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .modal-location {
-            color: #666;
-            margin-bottom: 15px;
-        }
-
-        .modal-desc {
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        .contact-btn {
-            width: 100%;
-            padding: 15px;
-            background: #38a169;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .contact-btn:hover {
-            background: #2f855a;
+        .footer p {
+            font-size: 14px;
+            color: #aaa;
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">🏠 HomeFinder USA</div>
-        <div class="tagline">Affordable Homes for Working Families</div>
-    </header>
+    <!-- Main Page -->
+    <div id="main-page">
+        <div class="header">
+            <h1>🏠 HomeFinder USA</h1>
+            <p>Affordable Homes for Working Families</p>
+        </div>
 
-    <section class="search-section">
-        <div class="search-container">
-            <h2 class="search-title">Find Your Perfect Home</h2>
-            <div class="search-filters">
-                <input type="text" id="locationInput" placeholder="Enter city or state (e.g., Texas, Florida)">
-                <select id="typeInput">
-                    <option value="">All Home Types</option>
-                    <option value="house">Single Family House</option>
-                    <option value="townhouse">Townhouse</option>
-                    <option value="ranch">Ranch Style</option>
-                    <option value="bungalow">Bungalow</option>
-                    <option value="craftsman">Craftsman</option>
-                    <option value="colonial">Colonial</option>
+        <div class="search-box">
+            <h2>Find Your Home</h2>
+            <form class="search-form" onsubmit="return false;">
+                <input type="text" id="searchInput" placeholder="Type state name (e.g., Texas, Ohio)...">
+                <select id="priceFilter">
+                    <option value="all">All Prices</option>
+                    <option value="low">Under $250,000</option>
+                    <option value="mid">$250,000 - $400,000</option>
+                    <option value="high">$400,000+</option>
                 </select>
-                <select id="priceInput">
-                    <option value="">Any Price</option>
-                    <option value="0-200000">Under $200,000</option>
-                    <option value="200000-400000">$200k - $400k</option>
-                    <option value="400000-600000">$400k - $600k</option>
-                    <option value="600000-800000">$600k - $800k</option>
-                </select>
-            </div>
-            <button class="search-btn" onclick="searchProperties()">🔍 Search Homes</button>
-        </div>
-    </section>
-
-    <section class="properties-section">
-        <h2 class="section-title">Available Properties</h2>
-        <p class="section-subtitle">Quality homes at prices you can afford</p>
-        
-        <div class="filter-tabs">
-            <button class="filter-tab active" onclick="showAll()">All Homes</button>
-            <button class="filter-tab" onclick="showFeatured()">Featured</button>
-            <button class="filter-tab" onclick="showUnder300()">Under $300k</button>
+                <button type="button" class="search-btn" onclick="filterHomes()">🔍 Search Homes</button>
+                <button type="button" class="search-btn" onclick="showAll()" style="background: #666; margin-top: 5px;">Show All Homes</button>
+            </form>
         </div>
 
-        <div class="no-results" id="noResults">
-            <h3>No homes found</h3>
-            <p>Try adjusting your search criteria</p>
+        <div class="filters">
+            <a href="#" class="filter-link active" onclick="showAll(); return false;">All</a>
+            <a href="#" class="filter-link" onclick="showUnder250(); return false;">Under $250k</a>
+            <a href="#" class="filter-link" onclick="showFeatured(); return false;">Featured</a>
         </div>
 
-        <div class="property-grid" id="propertyGrid">
-            <!-- Property 1 -->
-            <div class="property-card" data-location="ohio" data-type="house" data-price="285000" data-featured="true">
-                <div class="property-image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/d3c2c47aeb30179442a8d1e380bcf9451f9f8521.jpg" alt="Suburban Home" class="property-image">
-                    <span class="property-badge featured">FEATURED</span>
-                </div>
+        <div class="properties">
+            <h2 class="section-title">Available Homes</h2>
+
+            <!-- House 1 -->
+            <div class="property-card" data-state="ohio" data-price="285000" data-featured="yes">
+                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600" alt="House" class="property-image">
                 <div class="property-info">
                     <div class="property-price">$285,000</div>
-                    <h3 class="property-title">Beautiful Suburban Family Home</h3>
+                    <div class="property-title">Beautiful Family Home</div>
                     <div class="property-location">📍 Columbus, Ohio</div>
-                    <div class="property-features">
-                        <span class="feature">🛏️ 4 bd</span>
-                        <span class="feature">🛁 3 ba</span>
-                        <span class="feature">📐 2,400 sqft</span>
-                    </div>
-                    <button class="view-btn" onclick="openModal(0)">View Details</button>
+                    <div class="property-features">4 beds • 3 baths • 2,400 sqft</div>
+                    <a href="#house1" class="details-btn">View Details</a>
                 </div>
             </div>
 
-            <!-- Property 2 -->
-            <div class="property-card" data-location="virginia" data-type="townhouse" data-price="320000" data-featured="false">
-                <div class="property-image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/prod.rockmedialibrary.com/5474c698a08439e041588692f3a4d5a8ac18e30d" alt="Townhouse" class="property-image">
-                    <span class="property-badge">FOR SALE</span>
-                </div>
-                <div class="property-info">
-                    <div class="property-price">$320,000</div>
-                    <h3 class="property-title">Modern Townhouse</h3>
-                    <div class="property-location">📍 Richmond, Virginia</div>
-                    <div class="property-features">
-                        <span class="feature">🛏️ 3 bd</span>
-                        <span class="feature">🛁 2.5 ba</span>
-                        <span class="feature">📐 1,800 sqft</span>
-                    </div>
-                    <button class="view-btn" onclick="openModal(1)">View Details</button>
-                </div>
-            </div>
-
-            <!-- Property 3 -->
-            <div class="property-card" data-location="texas" data-type="ranch" data-price="425000" data-featured="true">
-                <div class="property-image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/buildmax.com/eb23523b13191384e0e5daa0985416ef9e1a68bb.jpg" alt="Ranch Home" class="property-image">
-                    <span class="property-badge featured">FEATURED</span>
-                </div>
-                <div class="property-info">
-                    <div class="property-price">$425,000</div>
-                    <h3 class="property-title">Spacious Ranch Style Home</h3>
-                    <div class="property-location">📍 Austin, Texas</div>
-                    <div class="property-features">
-                        <span class="feature">🛏️ 4 bd</span>
-                        <span class="feature">🛁 2 ba</span>
-                        <span class="feature">📐 2,200 sqft</span>
-                    </div>
-                    <button class="view-btn" onclick="openModal(2)">View Details</button>
-                </div>
-            </div>
-
-            <!-- Property 4 -->
-            <div class="property-card" data-location="michigan" data-type="bungalow" data-price="195000" data-featured="false">
-                <div class="property-image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/res.cloudinary.com/1741e8b2260f7d532d883364e537d7304160f7a3.jpg" alt="Bungalow" class="property-image">
-                    <span class="property-badge">FOR SALE</span>
-                </div>
+            <!-- House 2 -->
+            <div class="property-card" data-state="texas" data-price="195000" data-featured="no">
+                <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600" alt="House" class="property-image">
                 <div class="property-info">
                     <div class="property-price">$195,000</div>
-                    <h3 class="property-title">Charming Bungalow</h3>
+                    <div class="property-title">Cozy Starter Home</div>
+                    <div class="property-location">📍 Houston, Texas</div>
+                    <div class="property-features">3 beds • 2 baths • 1,500 sqft</div>
+                    <a href="#house2" class="details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- House 3 -->
+            <div class="property-card" data-state="florida" data-price="320000" data-featured="yes">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="House" class="property-image">
+                <div class="property-info">
+                    <div class="property-price">$320,000</div>
+                    <div class="property-title">Sunny Florida Home</div>
+                    <div class="property-location">📍 Orlando, Florida</div>
+                    <div class="property-features">4 beds • 2 baths • 2,100 sqft</div>
+                    <a href="#house3" class="details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- House 4 -->
+            <div class="property-card" data-state="michigan" data-price="225000" data-featured="no">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" alt="House" class="property-image">
+                <div class="property-info">
+                    <div class="property-price">$225,000</div>
+                    <div class="property-title">Charming Bungalow</div>
                     <div class="property-location">📍 Grand Rapids, Michigan</div>
-                    <div class="property-features">
-                        <span class="feature">🛏️ 3 bd</span>
-                        <span class="feature">🛁 2 ba</span>
-                        <span class="feature">📐 1,500 sqft</span>
-                    </div>
-                    <button class="view-btn" onclick="openModal(3)">View Details</button>
+                    <div class="property-features">3 beds • 2 baths • 1,700 sqft</div>
+                    <a href="#house4" class="details-btn">View Details</a>
                 </div>
             </div>
 
-            <!-- Property 5 -->
-            <div class="property-card" data-location="indiana" data-type="craftsman" data-price="275000" data-featured="true">
-                <div class="property-image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.windowworld.com/4a1dfb620883565f86924bd2291047839941e5b6.jpg" alt="Craftsman" class="property-image">
-                    <span class="property-badge featured">FEATURED</span>
-                </div>
+            <!-- House 5 -->
+            <div class="property-card" data-state="arizona" data-price="375000" data-featured="yes">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600" alt="House" class="property-image">
                 <div class="property-info">
-                    <div class="property-price">$275,000</div>
-                    <h3 class="property-title">Classic Craftsman Home</h3>
-                    <div class="property-location">📍 Indianapolis, Indiana</div>
-                    <div class="property-features">
-                        <span class="feature">🛏️ 4 bd</span>
-                        <span class="feature">🛁 2 ba</span>
-                        <span class="feature">📐 2,100 sqft</span>
-                    </div>
-                    <button class="view-btn" onclick="openModal(4)">View Details</button>
-                </div>
-            </div>
-
-            <!-- Property 6 -->
-            <div class="property-card" data-location="arizona" data-type="house" data-price="385000" data-featured="false">
-                <div class="property-image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.ronenbekerman.com/c37bdb1b4e921bdd878e6d942c308d2e1cc1f483.jpg" alt="Modern Home" class="property-image">
-                    <span class="property-badge">FOR SALE</span>
-                </div>
-                <div class="property-info">
-                    <div class="property-price">$385,000</div>
-                    <h3 class="property-title">Modern Single Family Home</h3>
+                    <div class="property-price">$375,000</div>
+                    <div class="property-title">Modern Desert Home</div>
                     <div class="property-location">📍 Phoenix, Arizona</div>
-                    <div class="property-features">
-                        <span class="feature">🛏️ 4 bd</span>
-                        <span class="feature">🛁 3 ba</span>
-                        <span class="feature">📐 2,600 sqft</span>
-                    </div>
-                    <button class="view-btn" onclick="openModal(5)">View Details</button>
+                    <div class="property-features">4 beds • 3 baths • 2,300 sqft</div>
+                    <a href="#house5" class="details-btn">View Details</a>
                 </div>
             </div>
 
-            <!-- Property 7 -->
-            <div class="property-card" data-location="pennsylvania" data-type="colonial" data-price="450000" data-featured="true">
-                <div class="property-image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/shabbyfufu.com/de8e26a25ae27c9b01441a657276451e4f84cb37.jpg" alt="Colonial" class="property-image">
-                    <span class="property-badge featured">FEATURED</span>
-                </div>
+            <!-- House 6 -->
+            <div class="property-card" data-state="georgia" data-price="265000" data-featured="no">
+                <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600" alt="House" class="property-image">
                 <div class="property-info">
-                    <div class="property-price">$450,000</div>
-                    <h3 class="property-title">Elegant Colonial Home</h3>
-                    <div class="property-location">📍 Philadelphia, Pennsylvania</div>
-                    <div class="property-features">
-                        <span class="feature">🛏️ 5 bd</span>
-                        <span class="feature">🛁 3.5 ba</span>
-                        <span class="feature">📐 3,200 sqft</span>
-                    </div>
-                    <button class="view-btn" onclick="openModal(6)">View Details</button>
+                    <div class="property-price">$265,000</div>
+                    <div class="property-title">Southern Style Home</div>
+                    <div class="property-location">📍 Atlanta, Georgia</div>
+                    <div class="property-features">4 beds • 2.5 baths • 2,200 sqft</div>
+                    <a href="#house6" class="details-btn">View Details</a>
                 </div>
             </div>
 
-            <!-- Property 8 -->
-            <div class="property-card" data-location="oregon" data-type="cottage" data-price="310000" data-featured="false">
-                <div class="property-image-container">
-                    <img src="https://kimi-web-img.moonshot.cn/img/www.bhg.com/7ba46b7bc4a6f0554ca5efac617baed7725205b9.jpg" alt="Cottage" class="property-image">
-                    <span class="property-badge">
+            <!-- House 7 -->
+            <div class="property-card" data-state="tennessee" data-price="245000" data-featured="no">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600" alt="House" class="property-image">
+                <div class="property-info">
+                    <div class="property-price">$245,000</div>
+                    <div class="property-title">Music City Home</div>
+                    <div class="property-location">📍 Nashville, Tennessee</div>
+                    <div class="property-features">3 beds • 2 baths • 1,800 sqft</div>
+                    <a href="#house7" class="details-btn">View Details</a>
+                </div>
+            </div>
+
+            <!-- House 8 -->
+            <div class="property-card" data-state="north carolina" data-price="295000" data-featured="yes">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600" alt="House" class="property-image">
+                <div class="property-info">
+                    <div class="property-price">$295,000</div>
+                    <div class="property-title">Carolina Comfort</div>
+                    <div class="property-location">📍 Charlotte, North Carolina</div>
+                    <div class="property-features">4 beds • 3 baths • 2,400 sqft</div>
+                    <a href="#house8" class="details-btn">View Details</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>HomeFinder USA</h3>
+            <p>Call: (800) 555-HOME</p>
+            <p>Email: info@homefinderusa.com</p>
+        </div>
+    </div>
+
+    <!-- Detail Pages -->
+    <div id="house1" class="detail-page">
+        <a href="#" class="back-btn">← Back to Listings</a>
+        <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=600" alt="House">
+        <div class="detail-price">$285,000</div>
+        <h2>Beautiful Family Home</h2>
+        <p>📍 Columbus, Ohio</p>
+        <p>4 beds • 3 baths • 2,400 sqft</p>
+        <p style="margin-top: 15px;">Perfect family home in a great neighborhood. Updated kitchen, spacious backyard, two-car garage. Close to schools and parks.</p>
+        <div class="contact-box">
+            <p>Interested in this home?</p>
+            <a href="tel:8005554663">📞 Call (800) 555-HOME</a>
+        </div>
+    </div>
+
+    <div id="house2" class="detail-page">
+        <a href="#" class="back-btn">← Back to Listings</a>
+        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600" alt="House">
+        <div class="detail-price">$195,000</div>
+        <h2>Cozy Starter Home</h2>
+        <p>📍 Houston, Texas</p>
+        <p>3 beds • 2 baths • 1,500 sqft</p>
+        <p style="margin-top: 15px;">Great starter home with recent updates. Perfect for first-time buyers. Quiet street, friendly neighbors.</p>
+        <div class="contact-box">
+            <p>Interested in this home?</p>
+            <a href="tel:8005554663">📞 Call (800) 555-HOME</a>
+        </div>
+    </div>
+
+    <div id="house3" class="detail-page">
+        <a href="#" class="back-btn">← Back to Listings</a>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600" alt="House">
+        <div class="detail-price">$320,000</div>
+        <h2>Sunny Florida Home</h2>
+        <p>📍 Orlando, Florida</p>
+        <p>4 beds • 2 baths • 2,100 sqft</p>
+        <p style="margin-top: 15px;">Bright and airy home with pool. Great for families. Close to Disney and all attractions.</p>
+        <div class="contact-box">
+            <p>Interested in this home?</p>
+            <a href="tel:8005554663">📞 Call (800) 555-HOME</a>
+        </div>
+    </div>
+
+    <div id="house4" class="detail-page">
+        <a href="#" class="back-btn">← Back to Listings</a>
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600" alt="House">
+        <div class="detail-price">$225,000</div>
+        <h2>Charming Bungalow</h2>
+        <p>📍 Grand Rapids, Michigan</p>
+        <p>3 beds • 2 baths • 1,700 sqft</p>
+        <p style="margin-top: 15px;">Adorable bungalow with character. Updated kitchen, beautiful garden. Great neighborhood.</p>
+        <div class="contact-box">
+            <p>Interested in this home?</p>
+            <a href="tel:8005554663">📞 Call (800) 555-HOME</a>
+        </div>
+    </div>
+
+    <div id="house5" class="detail-page">
+        <a href="#" class="back-btn">← Back to Listings</a>
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600" alt="House">
+        <div class="detail-price">$375,000</div>
+        <h2>Modern Desert Home</h2>
+        <p>📍 Phoenix, Arizona</p>
+        <p>4 beds • 3 baths • 2,300 sqft</p>
+        <p style="margin-top: 15px;">Contemporary home with pool and mountain views. Energy efficient, smart home features.</p>
+        <div class="contact-box">
+            <p>Interested in this home?</p>
+            <a href="tel:8005554663">📞 Call (800) 555-HOME</a>
+        </div>
+    </div>
+
+    <div id="house6" class="detail-page">
+        <a href="#" class="back-btn">← Back to Listings</a>
+        <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=600" alt="House">
+        <div class="detail-price">$265,000</div>
+        <h2>Southern Style Home</h2>
+        <p>📍 Atlanta, Georgia</p>
+        <p>4 beds • 2.5 baths • 2,200 sqft</p>
+        <p style="margin-top: 15px;">Classic Southern home with wrap-around porch. Large lot, great schools nearby.</p>
+        <div class="contact-box">
+            <p>Interested in this home?</p>
+            <a href="tel:8005554663">📞 Call (800) 555-HOME</a>
+        </div>
+    </div>
+
+    <div id="house7" class="detail-page">
+        <a href="#" class="back-btn">← Back to Listings</a>
+        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600" alt="House">
+        <div class="detail-price">$245,000</div>
+        <h2>Music City Home</h2>
+        <p>📍 Nashville, Tennessee</p>
+        <p>3 beds • 2 baths • 1,800 sqft</p>
+        <p style="margin-top: 15px;">Great location in Nashville. Updated interior, close to downtown music scene.</p>
+        <div class="contact-box">
+            <p>Interested in this home?</p>
+            <a href="tel:8005554663">📞 Call (800) 555-HOME</a>
+        </div>
+    </div>
+
+    <div id="house8" class="detail-page">
+        <a href="#" class="back-btn">← Back to Listings</a>
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600" alt="House">
+        <div class="detail-price">$295,000</div>
+        <h2>Carolina Comfort</h2>
+        <p>📍 Charlotte, North Carolina</p>
+        <p>4 beds • 3 baths • 2,400 sqft</p>
+        <p style="margin-top: 15px;">Spacious home in great neighborhood. Close to Uptown Charlotte. Move-in ready.</p>
+        <div class="contact-box">
+            <p>Interested in this home?</p>
+            <a href="tel:8005554663">📞 Call (800) 555-HOME</a>
+        </div>
+    </div>
+
+    <script>
+        function filterHomes() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const priceFilter = document.getElementById('priceFilter').value;
+            const cards = document.querySelectorAll('.property-card');
+            
+            cards.forEach(card => {
+                const state = card.getAttribute('data-state');
+                const price = parseInt(card.getAttribute('data-price'));
+                let show = true;
+                
+                // Filter by state
+                if (searchTerm && !state.includes(searchTerm)) {
+                    show = false;
+                }
+                
+                // Filter by price
+                if (priceFilter === 'low' && price > 250000) show = false;
+                if (priceFilter === 'mid' && (price < 250000 || price > 400000)) show = false;
+                if (priceFilter === 'high' && price < 400000) show = false;
+                
+                if (show) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function showAll() {
+            document.querySelectorAll('.property-card').forEach(card => {
+                card.style.display = 'block';
+            });
+            document.getElementById('searchInput').value = '';
+            document.getElementById('priceFilter').value = 'all';
+        }
+
+        function showUnder250() {
+            document.querySelectorAll('.property-card').forEach(card => {
+                const price = parseInt(card.getAttrib
